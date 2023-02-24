@@ -1,0 +1,10 @@
+ We have to create docker file in parent directory.
+ add dockerignore file.
+Add commands in docker file for copy and build.
+add nginx.conf file in project if not added.
+go to cmd of parent directory of the project.
+for creating images execute command > docker build -t av-aithrangular-image .
+for ceratinig container execute  > docker run --name av-av-aithrangular-image-container -d -p 8081:80 av-aithrangular-image
+you change the port if needed.
+Go to desktop docker and you can check your image and container and also test your image by running in browser.
+link refer : https://wkrzywiec.medium.com/build-and-run-angular-application-in-a-docker-container-b65dbbc50be8

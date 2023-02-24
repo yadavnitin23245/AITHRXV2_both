@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="AirtrAPISpadez" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\AirthWholeSaleProject\\AirthwholeSaleAPI\\Airth_whole_sale_API\\AirthwholesaleAPI\\obj\\Release\\net6\.0\\PubTmp\\Out\\$" />
+  </parameter>
+</parameters>

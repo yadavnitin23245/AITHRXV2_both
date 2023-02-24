@@ -1,0 +1,393 @@
+<form class="w-100" [formGroup]="vhrReportForm">
+    <section class="vhr-report" style="height:100vh;">
+        <div class="container-fliud">
+            <div class="row">
+                  <div class="col-12 my-2"> 
+                    <div class="w-100">
+                        <h4 class="title" >Inventory</h4>
+                        <div class="col-12 pl-sm-0">
+                            <div id="vhrreport-rightbar" class="row">
+                            <div class="form-group col-lg-6 col-xl-4">
+                                <label class="col-form-label">Dealer Name:</label>
+                                <select class="form-control" (change)="GetVehcileListByDealerid($event.target.value)"
+                                    formControlName="DealerName"
+                                    [ngClass]="{ 'is-invalid': submitted && f.DealerName.errors }">
+                                    <option value="new">Select Dealer Name</option>
+                                    <option [value]="dealerLists.dealerID" *ngFor="let dealerLists of dealerList">
+                                        {{dealerLists.dealerName}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group  col-lg-6 col-xl-4">
+                                <label class="col-form-label">Make:</label>
+                                <select class="form-control" formControlName="MakeName"
+                                    (change)="GetVehcileListByMake($event.target.value)"
+                                    [ngClass]="{ 'is-invalid': submitted && f.MakeName.errors }">
+                                    <option value="new">Select Make Name</option>
+                                    <option [value]="makeLists.make" *ngFor="let makeLists of makeList">
+                                        {{makeLists.make}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-6 col-xl-4">
+                                <div class="row">
+                                    <div class="col-lg-9">
+                                        <label class="col-form-label">Search:</label>
+                                        <input class="form-control" type="text" formControlName="SerachName"
+                                            style="height:34px;line-height:34px;" name="search" [(ngModel)]="searchText"
+                                            autocomplete="off">
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <button style="margin-top:30px;" type="button" class="btn btn-primary" (click)="ResetFilter();">Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div id="vhr-report-details" class="table-responsive mt-3">
+                        <table class="table table-bordered" style="position:relative;">
+                            <thead>
+                                <tr>
+
+                                    <th>Action</th>
+
+                                    <th (click)="sort('inStockDate')">In Stock Date
+                                        <i class="fa fa-fw fa-sort"></i>
+                                    </th>
+                                    <th (click)="sort('stockNumber')">Stock Number <i class="fa fa-fw fa-sort"></i></th>
+                                    <th (click)="sort('vehicleID')">Vehicle ID<i class="fa fa-fw fa-sort"></i></th>
+                                    <th class="status"> Status</th>
+                                    <th (click)="sort('dealerName')">Dealer Name <i class="fa fa-fw fa-sort"></i></th>
+                                    <th style="width:180px;" (click)="sort('vin')">VIN <i class="fa fa-fw fa-sort"></i>
+                                    </th>
+                                    <th class="year" (click)="sort('year')">Year <i class="fa fa-fw fa-sort"></i></th>
+                                    <th class="make" (click)="sort('make')"> Make <i class="fa fa-fw fa-sort"></i></th>
+                                    <th class="hwympg" (click)="sort('hwyMPG')"> hwy MPG <i class="fa fa-fw fa-sort"></i></th>
+                                    <th (click)="sort('model')"> Model <i class="fa fa-fw fa-sort"></i></th>
+                                    <th (click)="sort('bodyType')"> Body Type <i class="fa fa-fw fa-sort"></i></th>
+
+                                </tr>
+                            </thead>
+                            <tbody style="position:relative;">
+
+                                <!-- <tr *ngFor="let vehicleInformations of vehcileinfogrid| filter:searchText| slice: (page-1)  pageSize : (page-1) * pageSize + pageSize"> -->
+                                <tr *ngFor="let vehicleInformations of vehcileinfogrid | filter:searchText| paginate: {  itemsPerPage: pageSize,
+                                    currentPage: page,
+                                    totalItems: count };  let i = index">
+                                    <td>
+
+                                        <div class="btn-group">
+                                            <button class="btn btn-success mr-1" title="Go to Vehicle Details"
+                                                routerLink="/vehicle-details/{{vehicleInformations.vehicleID}}"><i
+                                                    class="fa-solid fa-plus"></i></button>
+                                            <button type="button" class="btn btn-primary"
+                                                (click)="openpop(pdfmodal);">VHR</button>
+                                            <button class="btn btn-warning mx-1"
+                                                (click)="openExtendedDescriptionModelPopUp(ModelPopUpExtendedDescription,vehicleInformations.vehicleID,vehicleInformations.vin,vehicleInformations.make)"><i
+                                                    class="fa fa-comments"></i></button>
+
+                                            <button class="btn btn-info"
+                                                (click)="openImagesModelPopUp(ModelPopUpImages,vehicleInformations.vehicleID)"><i
+                                                    class="fa fa-image"></i></button>
+                                        </div>
+                                    </td>
+                                    <td>{{ vehicleInformations.inStockDate | date:'longDate' }}</td>
+                                    <td style="text-align: center;">{{ vehicleInformations.stockNumber}}</td>
+                                    <td style="text-align: center;">{{ vehicleInformations.vehicleID }}</td>
+                                    <td class="status" style="text-align: center;">{{ vehicleInformations.vehicleStatus }}</td>
+                                    <td style="text-align: center;">{{ vehicleInformations.dealerName}}</td>
+                                    <td style="width:180px;">{{ vehicleInformations.vin }}</td>
+                                    <td class="year">{{ vehicleInformations.year }}</td>
+                                    <td class="make">{{ vehicleInformations.make }}</td>
+                                    <td class="hwympg" style="text-align: right;">{{ vehicleInformations.hwyMPG }}</td>
+                                    <td>{{ vehicleInformations.model }}</td>
+                                    <td>{{ vehicleInformations.bodyType }}
+
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+
+                            <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="small" color="#fff" type="square-jelly-box"
+                                [fullScreen]="false">
+                                <p style="color: white"> Loading... </p>
+                            </ngx-spinner>
+                            <!-- <ngb-pagination [collectionSize]="vehcileinfogrid.length" [(page)]="page" [maxSize]="5"
+                                [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination> -->
+                            <!-- <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+                             -->
+                            
+                       </table>
+                    </div>
+                    <div class="col-12">
+                        <div class="row mt-2 justify-content-between align-items-center">
+                             <div class="col-sm-5">
+                                <div class="d-flex">
+                                    <div class="form-group row mr-2">
+                                        <label class="" style="padding:2px;"><b>Total Record:</b></label>
+                                        <span class="col-auto">{{VehicleTotalcount}}</span>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label style="padding:2px;"> Items per Page:</label>
+                                        <select (change)="handlePageSizeChange($event)">
+                                            <option *ngFor="let size of pageSizes" [ngValue]="size">
+                                                {{ size }}
+                                            </option>
+                                        </select>
+                                        </div>
+                                        </div>
+                                    </div>
+                             <div class="col-sm-7 pagination">
+                                 <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
+                                 (pageChange)="pageChangeEvent($event)"></pagination-controls>
+                             </div>
+                         </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <div class="container" style="position: relative;">
+        <ngx-loader [show]="show" [fullScreen]="fullScreen" [template]="template"> Loading... </ngx-loader>
+    </div>
+    <ng-template #ModelPopUpGenerateReport let-modal>
+        <div class="modal-header" style="background-color: black;">
+            <h5 class="modal-title" id="AccounttransferLabel" style="color: white;">Generate VHR Report</h5>
+            <button type="button" class="close" style="color: white;" (click)="modal.dismiss()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <section class="generate-report">
+                <div class="col-12">
+                    <p>This is not Account Token linked to the logged-in profile, it will only generate the demo report.
+                        <br>
+                        You can link your access token by editing your profile.
+                        <br>
+                        <span style="color: red;">VINs never have the letters ‘O’ or ‘I’ in them, so make sure these
+                            letters weren’t substituted for the numbers ‘0’ or ‘1.’
+                            missing.</span>
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" formControlName="VinNumberControl" (keyup)="onKeyUp($event)" maxlength="17"
+                        minlength="17"
+                        [ngClass]="{ 'is-invalid': submitted && f.VinNumberControl.errors && f.VinNumberControl.touched  }"
+                        class="form-control" placeholder="Enter your 17-character VIN" value=""
+                        [ngModelOptions]="{standalone: true}" />
+
+                    <div *ngIf="submitted && f.VinNumberControl.errors" class="invalid-feedback">
+                        <div *ngIf="f.VinNumberControl.errors.required">VIN Number is required.</div>
+
+                        <div *ngIf="f.VinNumberControl.errors.maxlength">
+                            VIN Number must not exceed 17 characters.
+                        </div>
+
+                        <div *ngIf="f.VinNumberControl.errors.minlength">
+                            VIN Number must be at least 17 characters long.
+                        </div>
+                    </div>
+
+                    <div *ngIf="show_i_o_error" style="color:red">
+                        I or O are not valid characters in VIN.
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="ShowLoader(pdfmodal);">Okay</button>
+            <!-- <button type="button" class="btn btn-primary" (click)="onClickDefault();modal.dismiss()">Okay</button> -->
+            <button type="button" class="btn btn-danger ml-2" (click)="Refresh();modal.dismiss()">Cancel</button>
+        </div>
+    </ng-template>
+</form>
+
+
+<ng-template #ModelPopUpExtendedDescription let-modal>
+    <div class="modal-header" style="background-color: black;">
+        <h5 class="modal-title" id="AccounttransferLabel" style="color: white;">Vehicle Details</h5>
+
+        <span style="color: white;padding-top: 7px;padding-left: 31px;"><b>VIN:</b> {{ShowVinNumber}}</span>
+        <span style="color: white;padding-top: 7px;padding-left: 12px;"> <b>MAKE:</b> {{ShowMake}}</span>
+        <button type="button" class="close" style="color: white;" #closebutton (click)="modal.dismiss()"
+            aria-label="Close">
+
+
+
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+
+        <section class="generate-report">
+            <div class="card mt-3">
+                <div class="card-header bg-dark text-white">
+                    <h6 class="mb-0">COMMENTS</h6>
+                </div>
+                <div id="vhr-report-details" class="table-responsive">
+                    <table class="table table-bordered mb-0">
+                        <tbody>
+
+                            <tr>
+                               
+                                <td>{{ vehicleComments[0].comments }}</td>
+                            </tr>
+                            <tr>
+                               
+                                <td style="text-align: center;">{{ vehicleComments[0].comments2}}</td>
+                            </tr>
+                            <tr>
+                               
+                                <td style="text-align: center;">{{ vehicleComments[0].comments3 }}</td>
+                            </tr>
+                            <tr>
+                               
+                                <td style="text-align: center;">{{ vehicleComments[0].comments4 }}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-header bg-dark text-white">
+                    <h6 class="mb-0">PREMIUM OPTION</h6>
+                </div>
+                <div id="vhr-report-details" class="table-responsive">
+                    <table class="table table-bordered mb-0">
+                        <thead>
+                            <tr>
+
+                                <th style="text-align: center;">Code</th>
+                                <th style="text-align: left;">Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr *ngFor="let premiumOption of premiumOptions">
+
+                                <td style="text-align: center;">{{ premiumOption.code}}</td>
+                                <td style="text-align: left;">{{ premiumOption.name }}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card mt-3">
+                    <div class="card-header bg-dark text-white">
+                        <h6 class="mb-0">Extended Details</h6>
+                    </div>
+                    <div id="vhr-report-details" class="table-responsive">
+                        <table class="table table-bordered mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Vehicle Name <i class="fa fa-fw fa-sort"></i></th>
+                                    <th>Body Style<i class="fa fa-fw fa-sort"></i></th>
+                                    <th>Drivetrain</th>
+                                    <th>Engine Type <i class="fa fa-fw fa-sort"></i></th>
+                                    <th>Displacement <i class="fa fa-fw fa-sort"></i></th>
+                                    <th>Fuel System <i class="fa fa-fw fa-sort"></i></th>
+                                    <th> Bestmake Name <i class="fa fa-fw fa-sort"></i></th>
+                                    <th> Bestmodel Name <i class="fa fa-fw fa-sort"></i></th>
+                                    <th> Beststyle Name <i class="fa fa-fw fa-sort"></i></th>
+                                    <th> Besttrim Name <i class="fa fa-fw fa-sort"></i></th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr *ngFor="let extendedDescriptionInfos of extendedDescriptionInfo">
+                                    <td>{{ extendedDescriptionInfos.extendedVehicleName }}</td>
+                                    <td style="text-align: center;">{{ extendedDescriptionInfos.extendedBodyStyle}}</td>
+                                    <td style="text-align: center;">{{ extendedDescriptionInfos.extendedDrivetrain }}
+                                    </td>
+                                    <td style="text-align: center;">{{ extendedDescriptionInfos.extendedEngineType }}
+                                    </td>
+                                    <td style="text-align: center;">{{ extendedDescriptionInfos.extendedDisplacement}}
+                                    </td>
+                                    <td>{{ extendedDescriptionInfos.extendedFuelSystem }}</td>
+                                    <td>{{ extendedDescriptionInfos.extendedBestmakename }}</td>
+                                    <td>{{ extendedDescriptionInfos.extendedBestmodelname }}</td>
+                                    <td>{{ extendedDescriptionInfos.extendedBeststylename }}</td>
+                                    <td>{{ extendedDescriptionInfos.extendedBesttrimname }}</td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger ml-2" (click)="modal.dismiss()">Cancel</button>
+    </div>
+</ng-template>
+
+<ng-template #ModelPopUpImages let-modal>
+    <div class="modal-header" style="background-color: black;">
+        <h5 class="modal-title" id="AccounttransferLabel" style="color: white;">Vehicle Images</h5>
+        <button type="button" class="close" style="color: white;" (click)="RefreshImageList();modal.dismiss()"
+            aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <section class="generate-report">
+
+            <div *ngIf="errorshow=='false'" style="width: 840px; height:450px; text-align:center;margin:0; padding:0;">
+                <ng-image-slider #nav [images]="vehicleObject" [infinite]="false" [autoSlide]="1"
+                    [imageSize]="{width: '30%', height: 400}" slideImage="1"></ng-image-slider>
+            </div>
+
+            <div *ngIf="errorshow=='true'" class="bg-danger text-white col-md-4 mx-auto text-center">
+                {{errorMessage}}
+            </div>
+
+        </section>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger ml-2" (click)="RefreshImageList();modal.dismiss()">Cancel</button>
+    </div>
+</ng-template>
+
+<ng-template #pdfmodal let-modal id="modelRef">
+    <div id="Reportmodaltest">
+
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">VHR Report</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">x</span>
+            </button>
+        </div>
+        <div class="modal-body" id="Reportmodal">
+            <div class="container" id="pdfdata">
+                <pdf-viewer [src]="pdfSource" [zoom-scale]="'page-width'" [fit-to-page]="true" style="display: block;">
+                </pdf-viewer>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Save')">Ok</button>
+        </div>
+    </div>
+</ng-template>

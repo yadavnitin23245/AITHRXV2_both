@@ -1,0 +1,346 @@
+<section class="mb-4 pt-4">
+    <div class="container-fliud">
+        <div class="row">
+            <form class="col-md-12" [formGroup]="vehicleDetailForm">
+                <div class="row d-flex justify-content-between align-items-center">
+                    <div class="col">
+                        <h4 class="mb-0">Vehicle Details</h4>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-inline d-flex justify-content-end">
+                            <a routerLink="/Vhr-Report" class="ml-2 nav-item nav-link btn btn-sm btn-primary">Back to List</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="vhrdetails" class="col-12 px-0 mt-3 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="form-group col-sm-3">
+                                    <label class="col-form-label">Dealer Name:</label>
+                                <p>{{DealerNameValue}}</p>
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <label class="col-form-label">Make:</label>
+                                <p>{{MakeValue}}</p>
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <label class="col-form-label">Model Number:</label>
+                                <p>{{ModelValue}}</p>
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <label class="col-form-label">VIN Number:</label>
+                                    <p>	{{VinValue}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" *ngIf="errorshow=='false'">
+                    <div class="col-12" id="vehicle-silder">
+                        <div class="card">
+                            <div class="card-header bg-dark text-white">
+                                <h6 class="mb-0">Vehicle Images</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="vehicle-slider" #container [ngStyle]="{width:300+'px'}"
+                                    style="text-align:center;margin:0; padding:0;">
+                                    <ng-image-slider #nav [images]="vehicleObject" [infinite]="false" [manageImageRatio]=true
+                                        [autoSlide]="1" [animationSpeed]="0.1" [imageSize]="{width: container.style.width, space:0}"
+                                        slideImage="1"></ng-image-slider>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            
+
+                <div class="row" *ngIf="errorshow=='true'">
+                    <div class="col-12" id="vehicle-silder">
+                        <div class="card">
+                            <div class="card-header bg-dark text-white">
+                                <h6 class="mb-0">Vehicle Images</h6>
+                            </div>
+                            <div class="card-body">
+                                <div  class="bg-danger text-white col-md-4 mx-auto text-center">
+                                    {{errorMessage}}
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header bg-dark text-white">
+                                <h6 class="mb-0">COMMENTS</h6>
+                            </div>
+                            <div id="vhr-report-details" class="table-responsive" *ngIf="showcommentsdetail=='true'">
+                                <table class="table table-bordered mb-0">
+                                    <tbody>
+                                        <tr>
+                                            <td>{{ vehicleComments[0].comments }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center;">{{ vehicleComments[0].comments2}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center;">{{ vehicleComments[0].comments3 }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center;">{{ vehicleComments[0].comments4 }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center;">{{ vehicleComments[0].comments5}}</td>
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div *ngIf="showcommentsdetail=='false'" id="vhr-report-details" class="table-responsive">
+                                No record.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6" >
+                        <div class="card">
+                            <div class="card-header bg-dark text-white">
+                                <h6 class="mb-0">PRICING INFORMATION</h6>
+                            </div>
+                                                
+                            <div id="vhr-report-details" class="table-responsive" *ngIf="showpricingInfo=='true'">
+                                <div class="col-12 cost-tabel mt-4">
+                                    <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td>Cost</td>
+                                            <td class="text-right">{{CostValue | currency: 'USD'}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ExtraPrice1</td>
+                                            <td class="text-right">{{ExtraPrice1Value | currency: 'USD'}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ExtraPrice2</td>
+                                            <td class="text-right">{{ExtraPrice2Value | currency: 'USD'}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ExtraPrice3</td>
+                                            <td class="text-right">{{ExtraPrice3Value | currency: 'USD'}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>List</td>
+                                            <td class="text-right">{{ListValue | currency: 'USD'}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Special</td>
+                                            <td class="text-right">{{SpecialValue | currency: 'USD'}}</td>
+                                        </tr>
+                                    </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div *ngIf="showpricingInfo=='false'" id="vhr-report-details" class="table-responsive">
+                                No record.
+                            </div>
+                        </div>
+                    </div>
+
+                
+
+                </div>
+
+
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header bg-dark text-white">
+                                <h6 class="mb-0">SUB OPTIONS</h6>
+                            </div>
+                            <div id="vhr-report-details" class="table-responsive" *ngIf="SubOtpionshow=='true'">
+                                <table class="table table-bordered mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:85%;">Name</th>
+                                            <th style="width:15%;">Msrp</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <tr  *ngFor="let subOptionsLists of subOptionsList">
+                                            <td style="width:85%;">{{ subOptionsLists.name }}</td>
+                                            <td style="width:15%;text-align: left;">{{ subOptionsLists.msrp}}</td>                                      
+                                        </tr>
+                                
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div *ngIf="SubOtpionshow=='false'" id="vhr-report-details" class="table-responsive">
+                                No record.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6" >
+                        <div class="card">
+                            <div class="card-header bg-dark text-white">
+                                <h6 class="mb-0">PREMIUM OPTION</h6>
+                            </div>
+                            <div id="vhr-report-details" class="table-responsive" *ngIf="premiumshow=='true'">
+                                <table class="table table-bordered mb-0">
+                                    <thead>
+                                        <tr>
+
+                                            <th style="width:15%;text-align: left;padding-left:20px;">Code</th>
+                                            <th style="width:85%;text-align: left;">Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr *ngFor="let premiumOption of premiumOptions">
+
+                                            <td style="width:15%;text-align: left;">{{ premiumOption.code}}</td>
+                                            <td style="width:85%;text-align: left;">{{ premiumOption.name }}</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div *ngIf="premiumshow=='false'" id="vhr-report-details" class="table-responsive">
+                                No record.
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                    
+                <div class="row mt-3" *ngIf="showlistOfAppliedOffers=='true'">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header bg-dark text-white" style="padding:15px 13px;">
+                                <h6 class="mb-0">Applied Offers</h6>
+                            </div>
+                            <div id="vhr-report-details"  class="table-responsive" style="min-height:auto;">
+                                <table class="table table-striped table-bordered mb-0">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>Offer Name <i class="fa fa-fw fa-sort"></i></th>
+                                            <th>Description<i class="fa fa-fw fa-sort"></i></th>
+                                            <th style="width:200px;">Start Date <i class="fa fa-fw fa-sort"></i></th>
+                                            <th>End Date <i class="fa fa-fw fa-sort"></i></th>
+                                            <th style="text-align: right;">Amount <i class="fa fa-fw fa-sort"></i></th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <tr  *ngFor="let listOfAppliedOffer of listOfAppliedOffers">
+                                            <td>{{ listOfAppliedOffer.offerName }}</td>
+                                            <td style="text-align: center;">{{ listOfAppliedOffer.offerDescription}}</td>
+                                            <td style="text-align: center;">{{ listOfAppliedOffer.offerStartDate| date:'longDate' }}
+                                            </td>
+                                            <td style="text-align: center;width:200px;">{{ listOfAppliedOffer.offerEndDate| date:'longDate' }}
+                                            </td>
+                                            <td style="text-align: right;">{{ listOfAppliedOffer.amount| currency: 'USD'}}
+                                            </td>
+                                            
+
+                                        </tr>
+                                                                
+                                    </tbody>
+                                </table>
+                            </div>                    
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3" *ngIf="showlistOfAppliedOffers=='false'">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header bg-dark text-white" style="padding:15px 13px;">
+                                <h6 class="mb-0">Applied Offers</h6>
+                            </div>
+                            <div id="vhr-report-details"  class="table-responsive" style="min-height:auto;">
+                                No record.
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3" *ngIf="showextendeddetail=='true'">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header bg-dark text-white" style="padding:15px 13px;">
+                                <h6 class="mb-0">Extended Details</h6>
+                            </div>
+                            <div id="vhr-report-details"  class="table-responsive">
+                                <table class="table table-bordered mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Vehicle Name <i class="fa fa-fw fa-sort"></i></th>
+                                            <th>Body Style<i class="fa fa-fw fa-sort"></i></th>
+                                            <th>Drivetrain</th>
+                                            <th style="width:300px;max-width:300px;">Engine Type <i class="fa fa-fw fa-sort"></i></th>
+                                            <th>Displacement <i class="fa fa-fw fa-sort"></i></th>
+                                            <th>Fuel System <i class="fa fa-fw fa-sort"></i></th>
+                                            <th> Bestmake Name <i class="fa fa-fw fa-sort"></i></th>
+                                            <th> Bestmodel Name <i class="fa fa-fw fa-sort"></i></th>
+                                            <th> Beststyle Name <i class="fa fa-fw fa-sort"></i></th>
+                                            <th> Besttrim Name <i class="fa fa-fw fa-sort"></i></th>
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <tr  *ngFor="let extendedDescriptionInfos of extendedDescriptionInfo">
+                                            <td>{{ extendedDescriptionInfos.extendedVehicleName }}</td>
+                                            <td style="text-align: center;">{{ extendedDescriptionInfos.extendedBodyStyle}}</td>
+                                            <td style="text-align: center;">{{ extendedDescriptionInfos.extendedDrivetrain }}
+                                            </td>
+                                            <td style="text-align: center;max-width:300px;width:300px;">{{ extendedDescriptionInfos.extendedEngineType }}
+                                            </td>
+                                            <td style="text-align: center;">{{ extendedDescriptionInfos.extendedDisplacement}}
+                                            </td>
+                                            <td>{{ extendedDescriptionInfos.extendedFuelSystem }}</td>
+                                            <td>{{ extendedDescriptionInfos.extendedBestmakename }}</td>
+                                            <td>{{ extendedDescriptionInfos.extendedBestmodelname }}</td>
+                                            <td>{{ extendedDescriptionInfos.extendedBeststylename }}</td>
+                                            <td>{{ extendedDescriptionInfos.extendedBesttrimname }}</td>
+
+                                        </tr>
+                                
+                                    
+
+                                    </tbody>
+                                </table>
+                            </div>                    
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3" *ngIf="showextendeddetail=='false'">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header bg-dark text-white" style="padding:15px 13px;">
+                                <h6 class="mb-0">Extended Details</h6>
+                            </div>
+                            <div id="vhr-report-details"  class="table-responsive">
+                                No record.
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

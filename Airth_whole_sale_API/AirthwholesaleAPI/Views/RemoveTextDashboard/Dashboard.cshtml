@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Airthwholesale.Bal.DTO.RemoveTextFiledetailsDTO>
+
+ <style>
+	.container {
+		padding: 2rem 0rem;
+	}
+
+	h4 {
+		margin: 2rem 0rem 1rem;
+	}
+
+	.table-image {
+		td, th
+
+	{
+		vertical-align: middle;
+	}
+
+
+	}
+
+	.table-image thead th {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 8px 8px;
+}
+
+
+
+ </style>
+
+@{
+
+    //foreach (var imagedeatils in Model)
+
+    //{
+    //    <img src="@imagedeatils.OriginalFilepath_fordisplay_basesixtyfour" alt="Trulli" width="500" height="333">
+    //    <img src="@imagedeatils.RemoveFilepath_fordisplay_basesixtyfour" alt="Trulli" width="500" height="333">
+    //}
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+		<table class="table table-image" border="1">
+		  <thead>
+		    <tr>
+		     <th scope="col">Oiginal Image</th>
+		     <th scope="col">Removed Text image</th>
+			<th scope="col">old_file_size</th>
+			<th scope="col">new_file_size</th>
+		    
+		    </tr>
+		  </thead>
+		  <tbody>
+			@foreach (var imagedeatils in Model)
+
+						{
+		    <tr>
+			<td class="w-25">
+			<img src="@imagedeatils.Orignalpiccdn" class="img-fluid img-thumbnail" width="500" height="300" alt="img">
+			</td>
+
+		      
+			<td class="w-25">
+				<img src="@imagedeatils.removepiccdn" class="img-fluid img-thumbnail" width="500" height="300" alt="img">
+		      </td>
+		      <td>@imagedeatils.Orignalpiccdn</td>
+			<td>@imagedeatils.removepiccdn</td>
+		    
+		    </tr>
+						}
+		  </tbody>
+		</table>   
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+   }
+

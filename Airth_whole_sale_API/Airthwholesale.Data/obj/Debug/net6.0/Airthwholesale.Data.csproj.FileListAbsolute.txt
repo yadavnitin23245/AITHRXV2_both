@@ -1,0 +1,14 @@
+C:\AirthWholeSaleProject\AirthwholeSaleAPI\Airth_whole_sale_API\Airthwholesale.Data\bin\Debug\net6.0\Airthwholesale.Data.deps.json
+C:\AirthWholeSaleProject\AirthwholeSaleAPI\Airth_whole_sale_API\Airthwholesale.Data\bin\Debug\net6.0\Airthwholesale.Data.runtimeconfig.json
+C:\AirthWholeSaleProject\AirthwholeSaleAPI\Airth_whole_sale_API\Airthwholesale.Data\bin\Debug\net6.0\Airthwholesale.Data.dll
+C:\AirthWholeSaleProject\AirthwholeSaleAPI\Airth_whole_sale_API\Airthwholesale.Data\bin\Debug\net6.0\Airthwholesale.Data.pdb
+C:\AirthWholeSaleProject\AirthwholeSaleAPI\Airth_whole_sale_API\Airthwholesale.Data\obj\Debug\net6.0\Airthwholesale.Data.csproj.AssemblyReference.cache
+C:\AirthWholeSaleProject\AirthwholeSaleAPI\Airth_whole_sale_API\Airthwholesale.Data\obj\Debug\net6.0\Airthwholesale.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\AirthWholeSaleProject\AirthwholeSaleAPI\Airth_whole_sale_API\Airthwholesale.Data\obj\Debug\net6.0\Airthwholesale.Data.AssemblyInfoInputs.cache
+C:\AirthWholeSaleProject\AirthwholeSaleAPI\Airth_whole_sale_API\Airthwholesale.Data\obj\Debug\net6.0\Airthwholesale.Data.AssemblyInfo.cs
+C:\AirthWholeSaleProject\AirthwholeSaleAPI\Airth_whole_sale_API\Airthwholesale.Data\obj\Debug\net6.0\Airthwholesale.Data.csproj.CoreCompileInputs.cache
+C:\AirthWholeSaleProject\AirthwholeSaleAPI\Airth_whole_sale_API\Airthwholesale.Data\obj\Debug\net6.0\Airthwholesale.Data.dll
+C:\AirthWholeSaleProject\AirthwholeSaleAPI\Airth_whole_sale_API\Airthwholesale.Data\obj\Debug\net6.0\refint\Airthwholesale.Data.dll
+C:\AirthWholeSaleProject\AirthwholeSaleAPI\Airth_whole_sale_API\Airthwholesale.Data\obj\Debug\net6.0\Airthwholesale.Data.pdb
+C:\AirthWholeSaleProject\AirthwholeSaleAPI\Airth_whole_sale_API\Airthwholesale.Data\obj\Debug\net6.0\Airthwholesale.Data.genruntimeconfig.cache
+C:\AirthWholeSaleProject\AirthwholeSaleAPI\Airth_whole_sale_API\Airthwholesale.Data\obj\Debug\net6.0\ref\Airthwholesale.Data.dll

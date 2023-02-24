@@ -1,0 +1,8 @@
+﻿Hello  <br/><br/><br/><br/>  This is the detail of CBB API Pull.  <br/>
+<br/>Total VIN count for CBB API Call : VINCount  <br/>  VIN count with CBB Pull Data : CBBCount
+
+<br/>
+<br/>
+<b>The detail for CBB API Pull Dealer wise  for the current Month  given as below.</b><br/><br/>
+CBBPullData
+<br/><br/><br/><br/>  Thanks.

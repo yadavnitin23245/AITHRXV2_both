@@ -1,0 +1,101 @@
+pdf-viewer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(5px 5px 5px #222222);
+  }
+
+ #Reportmodal .modal{
+    display: block !important; 
+}
+
+
+// #Reportmodal.modal-dialog{
+//     overflow-y: initial !important
+// }
+#Reportmodal{
+    height: 80vh !important;
+    overflow-y: auto !important;
+}
+
+#vhr-report-details table tbody tr td,
+ #vhr-report-details table thead tr th {
+    padding: 5px 8px;
+    line-height:20px;
+    min-width:155px;
+    width:156px;
+    white-space: normal;
+    text-align: center;
+}
+#vhr-report-details table
+{
+    table-layout: fixed;
+    word-break: break-all;
+}
+.generate-report #vhr-report-details table tbody tr td,
+.generate-report #vhr-report-details table thead tr th 
+{
+    width:auto;
+}
+
+.generate-report #vhr-report-details .table-bordered td, 
+.generate-report #vhr-report-details .table-bordered th {
+    border-bottom: none !important;
+    border-top: none;
+}
+
+
+#vhr-report-details {
+    height: 67vh;
+    max-height:75vh;
+    overflow-y: auto;
+    // white-space: nowrap;
+}
+.generate-report #vhr-report-details {
+    height: auto;
+    overflow-y:visible;
+}
+#vhr-report-details table
+{
+    margin:0;
+}
+#vhr-report-details tbody button.btn {
+    font-size: 11px;
+    padding:3px 8px;
+}
+
+
+
+#vhrreport-rightbar .form-group label {
+    margin: 0 5px;
+}
+#vhrreport-rightbar .form-group select {
+    height: 32px;
+    margin: 0 5px;
+}
+
+.vhr-report #vhr-report-details table th.year,
+.vhr-report #vhr-report-details table td.year
+{
+    width: 70px;
+    max-width: 75px;
+}
+.vhr-report #vhr-report-details table th.hwympg ,
+.vhr-report #vhr-report-details table td.hwympg,
+.vhr-report #vhr-report-details table th.status,
+.vhr-report #vhr-report-details table td.status {
+    width: 105px !important;
+}
+.vhr-report #vhr-report-details table th.make ,
+.vhr-report #vhr-report-details table td.make {
+    min-width: 80px !important;
+    width:152px !important;
+}
+
+.pagination ul {
+    margin: 0;
+}
+.pagination {
+    display: block;
+    text-align: right;
+}

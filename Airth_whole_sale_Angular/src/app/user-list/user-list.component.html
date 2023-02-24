@@ -1,0 +1,79 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-3">
+            <h4 class="mb-0">User List</h4>
+            <form class="col-12 px-0 mt-3" [formGroup]="UserListForm">
+                <div class="row mx-0 justify-content-between align-items-center mb-3">
+                    <div class="col-auto documentbtn">
+                        <ul class="list-unstyled mb-1">
+                            <li><button class="btn btn-primay btn-md mb-3 mb-md-0">Copy</button></li>
+                            <li><button class="btn btn-primay btn-md mb-3 mb-md-0">CSV</button></li>
+                            <li><button class="btn btn-primay btn-md mb-3 mb-md-0">Excel</button></li>
+                            <li><button class="btn btn-primay btn-md mb-3 mb-md-0">PDF</button></li>
+                            <li><button class="btn btn-primay btn-md mb-3 mb-md-0">Print</button></li>
+                            <li><button routerLink="/Carfax-API" class="btn btn-primay btn-md mb-3 mb-md-0">Carfax</button></li>
+                        </ul>
+                    </div>
+                    <div class="search-heros col-md-auto mt-3 mt-lg-0">
+                        <div class="form-group d-flex mb-1">
+                            <label class="mr-3 mt-2">Search:</label>
+                            <input class="form-control" type="text"
+                            name="search" [(ngModel)]="searchText"  [ngModelOptions]="{standalone: true}"
+                            autocomplete="off" >
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="table-responsive">
+                    <table id="usertable" class="table table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th (click)="sort('userName')">Name <i class="fa fa-fw fa-sort"></i></th>
+                                <th  (click)="sort('email')"> Email <i class="fa fa-fw fa-sort"></i></th>
+                                <th (click)="sort('addresslineone')">Address <i class="fa fa-fw fa-sort"></i></th>
+                                <th (click)="sort('country')">Country <i class="fa fa-fw fa-sort"></i> </th>
+                                <th (click)="sort('state')">State <i class="fa fa-fw fa-sort"></i></th>
+                                <th (click)="sort('city')">City <i class="fa fa-fw fa-sort"></i></th>
+                                <th>Phone</th>
+                                <th colspan="3"><i class="fa-solid fa-plus"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let account of accounts| filter:searchText | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                                <td>{{ account.firstName }} {{ account.lastName }}</td>
+                                <td>{{ account.email }}</td>
+                                <td>{{ account.addresslineone }}</td>
+                                <td>{{ account.country}}</td>
+                                <td>{{ account.state }}</td>
+                                <td>{{ account.city }}</td>
+                                <td>{{ account.phoneNumber }}</td>
+                                <td class="text-center"><button class="btn btn-primary" routerLink="/user-profile/{{ account.userName }}"><i class="fa-solid fa-pen-to-square"></i></button></td>
+                                <td class="text-center"><button class="btn btn-danger" (click)="onDelete(account.email);"><i class="fa fa-trash"></i></button></td>
+                                <td class="text-center"><button class="btn btn-warning"><i class="fa-solid fa-copyright"></i></button></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <br>
+                    <ngb-pagination [collectionSize]="accounts.length" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+
+
+                </div>
+                <a #ConfirmBox  style="display: none;" [routerLink]="" (click)="openModal(template)"><i
+                    class="fa fa-upload" triggers="mouseenter:mouseleave" popoverTitle="Delete Users"
+                    placement="top" ngbPopover="Are you sure you want to delete?"></i></a>
+                  <ng-template #template>
+                    <div class="modal-body text-center" >
+                      <p>Are you sure you want to delete?
+                      </p>
+                      <p></p>
+                      <button type="button" class="btn btn-success mr-2" (click)="confirm()" >Yes</button>
+                      <button type="button" class="btn btn-danger" (click)="decline()" >No</button>
+                    </div>
+                  </ng-template>
+
+            </form>
+        </div>
+    </div>
+</div>

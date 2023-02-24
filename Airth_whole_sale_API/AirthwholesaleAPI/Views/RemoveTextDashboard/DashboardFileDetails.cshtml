@@ -1,0 +1,295 @@
+﻿@model Airthwholesale.Bal.DTO.DashboardFilesDetailsViewModelDTO
+
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" /> *@
+
+<link href="CustomContent/css/style.css" rel="stylesheet" />
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/2.2.3/jquery.elevatezoom.min.js" integrity="sha512-UH428GPLVbCa8xDVooDWXytY8WASfzVv3kxCvTAFkxD2vPjouf1I3+RJ2QcSckESsb7sI+gv3yhsgw9ZhM7sDw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<style>
+ 
+
+    table {
+        table-layout: fixed;
+        word-wrap: break-word;
+    }
+
+
+    nav.navbar.navbar-blue {
+    background: #1f3b8a;
+    color: #fff;
+}
+a {
+   /* color: #fff;*/
+}
+
+a:active, a:hover {
+    color: inherit !important;
+}
+.nav>li>a:hover, .nav>li>a:focus {
+    text-decoration: none;
+    background-color: #102a74;
+    outline: none;
+    color: #fff;
+}
+
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 18px;
+    color: inherit;
+    padding: 2px 4px;
+    display:inline-block;
+}
+span.clickable.filter {
+    position: relative;
+    top: 5px;
+}
+#CleanImageDetails {
+    padding: 0;
+}
+table#CleanImageDetails thead {
+    background: #428bca;
+    padding: 0;
+    color: #fff;
+    font-size: 14px;
+}
+table#CleanImageDetails thead th {
+    border: none;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+    border: 1px #e7e5e5 solid;
+}
+
+table#CleanImageDetails {
+    border: 1px #428bca solid;
+    border-radius:4px;
+    -webket-border-radius:4px;
+    -moz-border-radius:4px;
+    -o-border-radius:4px;
+}
+
+</style>
+
+<!------ Include the above in your HEAD tag ---------->
+
+<nav class="navbar navbar-blue navbar-static-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                ADMIN
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://www.sciax2.it/forum/utenti/-kik_226760/" target="_blank">Return back</a></li>
+                <li class="dropdown ">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        Settings
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li class="dropdown-header">SETTINGS</li>
+                        <li class=""><a href="#">Link</a></li>
+                        <li class=""><a href="#">Other Link</a></li>
+                        <li class=""><a href="#">Other Link</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="col col-md-3">
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                            Files
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse in">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="badge">@Model.TotalFilescount</span> Total Files</li>
+                        <li class="list-group-item"><span class="badge">@Model.TotalRemovedTextfilecount</span> Total remove text files</li>
+                        <li class="list-group-item"><span class="badge">@Model.Total_file_uploadedToazure</span> Cdn converted</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                            Blog
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="badge">12</span> New</li>
+                        <li class="list-group-item"><span class="badge">5</span> Deleted</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                            Settings
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapse3" class="panel-collapse collapse">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="badge">1</span> Users Reported</li>
+                        <li class="list-group-item"><span class="badge">5</span> User Waiting Activation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col col-md-9">
+        <div class="row">
+            <div class="col col-md-5">
+                <h4>Today Stats:</h4>
+                @*	Visits<span class="pull-right strong">- 50%</span>
+                <div class="progress">
+                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50"aria-valuemin="0" aria-valuemax="100" style="width:50%">15%</div>
+                </div>
+                *@
+                Removed text <span class="pull-right strong">+ @Model.TotalRemovedTextfilecount_Percentage%</span>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="@Model.TotalRemovedTextfilecount_Percentage" aria-valuemin="0" aria-valuemax="100" style="width:@Model.TotalRemovedTextfilecount_Percentage%">@Model.TotalRemovedTextfilecount_Percentage%</div>
+                </div>
+
+                Uploaded for cdn<span class="pull-right strong">+ @Model.TotalfileUploaded_azurePercentage%</span>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="@Model.TotalfileUploaded_azurePercentage" aria-valuemin="0" aria-valuemax="100" style="width:@Model.TotalfileUploaded_azurePercentage%">@Model.TotalfileUploaded_azurePercentage%</div>
+                </div>
+            </div>
+            <div class="col col-md-5">
+                @*<h4>This Month Stats:</h4>
+                Visits<span class="pull-right strong">+ 45%</span>
+                <div class="progress">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="45"aria-valuemin="0" aria-valuemax="100" style="width:45%">45%</div>
+                </div>
+
+                395 New Users<span class="pull-right strong">+ 57%</span>
+                <div class="progress">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="57"aria-valuemin="0" aria-valuemax="100" style="width:57%">57%</div>
+                </div>
+
+                12.593 Downloads<span class="pull-right strong">+ 25%</span>
+                <div class="progress">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="25"aria-valuemin="0" aria-valuemax="100" style="width:25%">25%</div>
+                </div>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<section class="removetext-outer">
+    <div class="container-fluid">
+         <div class="panel panel-primary">
+            <div class="panel-heading">
+                 <h3 class="panel-title">Clean Files Details</h3>
+                 <div class="pull-right">
+					<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+						<i class="glyphicon glyphicon-filter"></i>
+					</span>
+				</div>
+            </div>
+          <div class="panel-body">
+                <table class="table table-striped table-dark" id="CleanImageDetails">
+                    <thead>
+                        <tr>
+                            <th>GroupName</th>
+                            <th>DealerName</th>
+                            <th>StockNumber</th>
+                            <th>VIN</th>
+                            <th>CarYr</th>
+                            <th>Mileage</th>
+                            <th>Make</th>
+                            <th>Model</th>
+                            <th>Trim</th>
+                            <th>Body</th>
+                            <th>Colour</th>
+                            <th>Remove Text Count</th>
+                            <th>Action</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var latestDetails in (List<Airthwholesale.Bal.DTO.CleanImagesDetailsDTO>)ViewBag.CleanImagesDetailsList)
+                        {
+                            <tr>
+
+                                <td>
+                                    @latestDetails.GroupName
+                                </td>
+                                <td>@latestDetails.DealerName</td>
+                                <td>@latestDetails.StockNumber</td>
+                                <td>@latestDetails.VIN</td>
+                                <td>@latestDetails.CarYr</td>
+                                <td>@latestDetails.Mileage</td>
+                                <td>@latestDetails.Make</td>
+                                <td>@latestDetails.Model</td>
+                                <td>@latestDetails.Trim</td>
+                                <td>@latestDetails.Body</td>             
+                                <td>@latestDetails.Colour</td>
+                                <td>@latestDetails.Removetext_count</td>
+                                <td> <a href="/RemoveTextDashboard/CleanedPictureDetailsByVechicleId/?vehicle=@latestDetails.VehicleID"  target="_blank">Details</a></td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@*<script>
+    $(document).ready(function() {
+        $('#dashboardDetailsTable').DataTable();
+    });
+</script>*@
+
+<script>
+   
+        //$('#dashboardTable').DataTable();
+         $('#CleanImageDetails').DataTable();
+   
+
+    //$("img").elevateZoom({ tint: true, tintColour: '#F90', tintOpacity: 0.5 });
+
+</script>

@@ -1,0 +1,85 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-3">
+            <div class="card" style="background-color:aliceblue ;">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="form-group row">
+
+                                <p style="margin-left: 15px;" ><b>Note</b> : You have to select Dealer Name from drop down and click on Execute button for execute this API and It will insert the 
+                                    Vehicles into JDP vehicles if new vehicle is retruned by API and if already vehicles already exist it updates the 
+                                    cost , speacial and status column in JDP table.
+                                </p>
+                                <label for="" class="col-md-4 col-form-label"
+                                 style="margin-top: 9px;"><b>Call Api By Dealer Name</b></label>
+                                <div class="col-md-8 col-form-label row">
+                                
+                                      <select #dealerdll class="form-control mr-2" style="width:70%;" 
+                                      
+                                      formControlName="DealerName">
+                                      <option value="new" [selected]="true">Select Dealer Name</option>
+                                      <option [value]="dealerLists.dealerID" *ngFor="let dealerLists of dealerList">
+                                          {{dealerLists.dealerName}}
+                                      </option>
+                                  </select>
+
+                                      <button class="btn btn-md btn-primary" (click)="CallAPIbyDealerName(dealerdll.value)">Execute</button>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mt-3">
+           
+            <form class="col-12 px-0 mt-3" [formGroup]="APICallHistoryForm">
+                <div class="row mx-0 justify-content-between align-items-center mb-3">   
+                    <h4 class="mb-0">API Call History</h4>               
+                    <div class="search-heros col-md-auto mt-3 mt-lg-0">
+                        <div class="form-group d-flex mb-1">
+                            <label class="mr-3 mt-2">Search:</label>
+                            <input style="height:34px;" class="form-control" type="text"
+                            name="search" [(ngModel)]="searchText"  [ngModelOptions]="{standalone: true}"
+                            autocomplete="off" >
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="table-responsive">
+                    <table id="usertable" class="table table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th (click)="sort('apiName')">Name <i class="fa fa-fw fa-sort"></i></th>
+                                <th  (click)="sort('initiatedFromIP')"> IP Address <i class="fa fa-fw fa-sort"></i></th>
+                                <th (click)="sort('addresslineone')">Start Time <i class="fa fa-fw fa-sort"></i></th>
+                                <th (click)="sort('completedTimeStamp')">End Time <i class="fa fa-fw fa-sort"></i> </th>
+                                <th (click)="sort('status')">Status <i class="fa fa-fw fa-sort"></i></th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let callhistorys of callhistory| filter:searchText | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                                <td>{{ callhistorys.apiName }}</td>
+                                <td>{{ callhistorys.initiatedFromIP }}</td>
+                                <td>{{ callhistorys.initiatedTimeStamp | date:'longDate' }}</td>
+                                <td>{{ callhistorys.completedTimeStamp | date:'longDate'}}</td>
+                                <td>{{ callhistorys.status }}</td>
+                               
+                               
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <br>
+                    <ngb-pagination [collectionSize]="callhistory.length" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

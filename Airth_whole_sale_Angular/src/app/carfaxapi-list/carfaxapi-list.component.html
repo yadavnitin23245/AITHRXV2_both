@@ -1,0 +1,160 @@
+<form class="col-12" [formGroup]="CarfaxapiForm">
+
+    <section class="carfzxapi">
+        <div class="container-fliud">
+            <div class="row">
+                <div class="col-12 col-lg-12 mt-3">
+                    <div class="d-flex justify-content-between">
+                        <h4 class="mt-2 mb-0">API List</h4>
+
+
+
+                        <!-- <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                            class="nav-item nav-link btn btn-sm btn-primary">Back to List</a> -->
+                        <a routerLink="/List" class="nav-item nav-link btn btn-sm btn-primary">Back to List</a>
+
+                    </div>
+
+                    <div class="table-responsive mt-3">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>SR</th>
+                                    <th>API Name</th>
+                                    <th> Description</th>
+                                    <th> Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>01</td>
+                                    <td>Generate Token</td>
+                                    <td>This generated access token is valid for 2 hours.
+                                    </td>
+                                    <td>
+                                        <button type="button" routerLink="/Carfex-portal" class="btn btn-primary">
+                                            <i class="fas fa-location-arrow"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>02</td>
+                                    <td>Generate VHR Report
+                                    </td>
+                                    <td>Click here to generated VHR Carfax Report.
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary"
+                                            (click)="openModelPopUp(ModelPopUpGenerateReport,'user')">
+                                            <i class="fas fa-location-arrow"></i></button>
+                                        <!-- <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#exampleModal">
+                                            <i class="fas fa-location-arrow"></i>
+                                        </button> -->
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>03</td>
+                                    <td>View VHR Report
+                                    </td>
+                                    <td>Click here to view already generated VHR Report.
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary"
+                                            (click)="onClickDefault();">
+                                            <i class="fas fa-location-arrow"></i></button>
+                                        <!-- <button type="button" routerLink="/Vhr-Report" class="btn btn-primary"><i
+                                                class="fas fa-location-arrow"></i></button></td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <ng-template #ModelPopUpGenerateReport let-modal>
+        <div class="modal-header" style="background-color: black;">
+            <h5 class="modal-title" id="AccounttransferLabel" style="color: white;">Generate VHR Report</h5>
+            <button type="button" class="close" style="color: white;" (click)="modal.dismiss()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <section class="generate-report">
+                <div class="col-12">
+                    <p>This is not Account Token linked to the logged-in profile, it will only generate the demo report.
+                        <br>
+                        You can link your access token by editing your profile.
+                        <br>
+                     <span style="color: red;">VINs never have the letters ‘O’ or ‘I’ in them, so make sure these letters weren’t substituted for the numbers ‘0’ or ‘1.’
+                        missing.</span>
+                    </p>
+                </div>
+
+                    <div class="form-group">
+                        <input type="text"   formControlName="VinNumberControl" (keyup)="onKeyUp($event)"
+                        maxlength="17" minlength="17"
+                        [ngClass]="{ 'is-invalid': submitted && f.VinNumberControl.errors && f.VinNumberControl.touched  }"
+                        class="form-control" placeholder="Enter your 17-character VIN"
+                         value="" [ngModelOptions]="{standalone: true}" />
+
+                         <div *ngIf="submitted && f.VinNumberControl.errors" class="invalid-feedback">
+                            <div *ngIf="f.VinNumberControl.errors.required">VIN Number is required.</div>
+
+                            <div *ngIf="f.VinNumberControl.errors.maxlength">
+                              VIN Number must not exceed 17 characters.
+                            </div>
+
+                            <div *ngIf="f.VinNumberControl.errors.minlength">
+                                VIN Number must be at least 17 characters long.
+                              </div>
+                          </div>
+
+                          <div *ngIf="show_i_o_error" style="color:red">
+                            I or O are not valid characters in VIN.
+                          </div>
+
+                    </div>
+
+            </section>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="ShowLoader(pdfmodal);">Okay</button>
+            <!-- <button type="button" class="btn btn-primary" (click)="onClickDefault();modal.dismiss()">Okay</button> -->
+            <button type="button" class="btn btn-danger ml-2" (click)="Refresh();modal.dismiss()">Cancel</button>
+        </div>
+    </ng-template>
+</form>
+
+<br />
+<div class="container" style="position: relative;">
+    <ngx-loader [show]="show" [fullScreen]="fullScreen" [template]="template"> Loading... </ngx-loader>
+</div>
+
+<!--
+//for pdf view -->
+<ng-template #pdfmodal let-modal id="modelRef">
+<div id="Reportmodaltest">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">VHR Report</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">x</span>
+        </button>
+    </div>
+    <div class="modal-body" id="Reportmodal">
+        <div class="container" id="pdfdata">
+            <pdf-viewer [src]="pdfSource" [zoom-scale]="'page-width'" [fit-to-page]="true" style="display: block;">
+            </pdf-viewer>
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Save')">Ok</button>
+    </div>
+</div>
+</ng-template>

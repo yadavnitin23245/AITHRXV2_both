@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/4192e9c5-ef08-4bb7-b6e0-784e0844cacd/AppServices/subscriptions/4192e9c5-ef08-4bb7-b6e0-784e0844cacd/resourceGroups/AithrJDPview_group/providers/Microsoft.Web/sites/AithrJDPview",
+    "appService.deploySubpath": "dist"
+}

@@ -1,0 +1,118 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-3">
+            <h4 class="mb-0 title">List of registered Dealer Groups</h4>
+            <form class="col-12 px-0 mt-3" [formGroup]="AddGroupForm" >
+                <div class="row mx-0 justify-content-between align-items-center mb-3">
+                    <div class="col-auto documentbtn">
+                        <ul class="list-unstyled mb-1">
+                            <li><button class="btn btn-secondary btn-sm mb-3 mb-md-0">Copy</button></li>
+                            <li><button class="btn btn-secondary btn-sm mb-3 mb-md-0">CSV</button></li>
+                            <li><button class="btn btn-secondary btn-sm mb-3 mb-md-0">Excel</button></li>
+                            <li><button class="btn btn-secondary btn-sm mb-3 mb-md-0">PDF</button></li>
+                            <li><button class="btn btn-secondary btn-sm mb-3 mb-md-0">Print</button></li>                  
+                        </ul>
+                    </div>
+                    <div class="search-heros col-md-auto mt-3 mt-lg-0">
+                        <div class="form-group d-flex mb-1">
+                            <label class="mr-3 mt-2">Search:</label>
+                            <input class="form-control" type="text"
+                            name="search" [(ngModel)]="searchText"  [ngModelOptions]="{standalone: true}"
+                            autocomplete="off" >
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="table-responsive">
+                    <table id="usertable" class="table table-bordered" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th (click)="sort('userName')" style="width: 70px;">ID <i class="fa fa-fw fa-sort"></i></th>
+                                <th  (click)="sort('email')"> Group Name</th>
+                                <th colspan="3"><button type="button" class="btn btn-primary btn-sm text-white" (click)="openAddGroupModel(ModelAddGroup)">
+                                  <i class="fas fa-plus" style="margin-right:4px;vertical-align:middle;font-size:13px;"></i> Add Group
+                                </button></th>
+                            </tr>
+                        </thead>
+                        <tbody>       
+                          <tr *ngFor="let Grouplistdata of Grouplist | filter:searchText | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let i = index; let odd = odd">
+                            <td>{{ Grouplistdata.id }}</td>
+                            <td> {{ Grouplistdata.groupName }}</td>
+                            <td>
+                              <button class="btn bg-gradient-info btn-sm"><i class="fa-solid fa-pen-to-square"></i></button>
+                              <button class="btn bg-gradient-danger btn-sm ml-2" (click)="openModal(template,Grouplistdata.id)"><i class="fa fa-trash"></i></button>
+                            </td>
+                          </tr>
+                      
+                        </tbody>
+                    </table>
+                    <br>
+                    <ngb-pagination [collectionSize]="Grouplist.length" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+
+
+                </div>
+
+                <a #ConfirmBox  style="display: none;" [routerLink]="" (click)="openModal(template,'')"><i
+                    class="fa fa-upload" triggers="mouseenter:mouseleave" popoverTitle="Delete Users"
+                    placement="top" ngbPopover="Are you sure you want to delete?"></i>
+                </a>
+                  <ng-template #template>
+                    <div class="modal-body text-center" >
+                      <p>Are you sure you want to delete?
+                      </p>
+                      <p></p>
+                      <button type="button" class="btn btn-success mr-2" (click)="confirm()" >Yes</button>
+                      <button type="button" class="btn btn-danger" (click)="decline()" >No</button>
+                    </div>
+                  </ng-template>
+
+
+                  <ng-template #ModelAddGroup let-modal>
+                    <div class="modal-header" style="background-color: black;">
+                        <h5 class="modal-title" id="AccounttransferLabel" style="color: white;">Add Group</h5>
+                        <button type="button" class="close" style="color: white;" #closebutton (click)="modal.dismiss()"
+                            aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                      <section class="generate-report">
+                        <div class="col-12">
+                            <p style="margin-left: -15px;">Name*
+                            </p>
+                        </div>
+        
+                            <div class="form-group">
+                              <input type="text" formControlName="groupName" 
+                              class="form-control" (keypress)="ValidTextBox($event)"
+                                 />
+                                 <p *ngIf="!isValid" style="color:red;">*Group Name is required </p>
+      
+                            </div>
+        
+                    </section>
+
+                   
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary btn-sm text-white" (click)="onSubmit();">
+                        <i style="margin-right:4px;vertical-align:middle;font-size:13px;"></i> Save
+                      </button>
+                       
+                      <button class="btn btn-danger btn-sm text-white" (click)="modal.dismiss();">
+                        <i style="margin-right:4px;vertical-align:middle;font-size:13px;"></i> Cancel
+                      </button>
+                  
+                        
+                    </div>
+                  </ng-template>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirthwholesaleAPI", "AirthwholesaleAPI\AirthwholesaleAPI.csproj", "{47E3CFBC-4590-4AE3-B1AB-3F4763E491D8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Airthwholesale.Bal", "Airthwholesale.Bal\Airthwholesale.Bal.csproj", "{8AE46D20-2E63-48DD-AA2F-388692E1E421}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirthwholesaleAPI.Common", "AirthwholesaleAPI.Common\AirthwholesaleAPI.Common.csproj", "{139AD0F2-DBE1-4A46-9B03-ABD82B7BC584}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Airthwholesale.Data", "Airthwholesale.Data\Airthwholesale.Data.csproj", "{8F8F0C25-9838-4E8E-B4CA-B66955C235AF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Airthwholesale.Repository", "Airthwholesale.Repository\Airthwholesale.Repository.csproj", "{911293FB-E022-40B7-979F-55542CFFB067}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Airt_whole_sale_angular", "Airt_whole_sale_angular", "{215E1785-562D-44EA-B462-E7D4F0ED8576}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{47E3CFBC-4590-4AE3-B1AB-3F4763E491D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47E3CFBC-4590-4AE3-B1AB-3F4763E491D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47E3CFBC-4590-4AE3-B1AB-3F4763E491D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47E3CFBC-4590-4AE3-B1AB-3F4763E491D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AE46D20-2E63-48DD-AA2F-388692E1E421}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AE46D20-2E63-48DD-AA2F-388692E1E421}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AE46D20-2E63-48DD-AA2F-388692E1E421}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AE46D20-2E63-48DD-AA2F-388692E1E421}.Release|Any CPU.Build.0 = Release|Any CPU
+		{139AD0F2-DBE1-4A46-9B03-ABD82B7BC584}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{139AD0F2-DBE1-4A46-9B03-ABD82B7BC584}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{139AD0F2-DBE1-4A46-9B03-ABD82B7BC584}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{139AD0F2-DBE1-4A46-9B03-ABD82B7BC584}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F8F0C25-9838-4E8E-B4CA-B66955C235AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F8F0C25-9838-4E8E-B4CA-B66955C235AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F8F0C25-9838-4E8E-B4CA-B66955C235AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F8F0C25-9838-4E8E-B4CA-B66955C235AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{911293FB-E022-40B7-979F-55542CFFB067}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{911293FB-E022-40B7-979F-55542CFFB067}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{911293FB-E022-40B7-979F-55542CFFB067}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{911293FB-E022-40B7-979F-55542CFFB067}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F07260FE-C8EA-42F7-B256-D7E1CBDCD187}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,114 @@
+ <!-- <div class="side-nav-content">
+   <ul class="nav-list list-unstyled">
+        <li routerLink="{{item.link}}" class="nav-list-item" *ngFor="let item of list">
+            <i class="{{item.icon}}"></i>
+            <span>
+                <a>{{item.name}}</a>
+            </span>
+        </li>   
+    </ul> 
+</div>-->
+
+<div class="navbar-side">
+    <ul class="nav-list list-unstyled">
+    <li>
+        <a routerLink="/master-dashboard" title="Dashboard">
+        <span class="icon">
+            <i class="fas fa-tachometer-alt"></i>
+        </span>
+        <span class="link-text">Dashboard</span>
+      </a></li>
+    <li>
+      <a href="#" class="myBtn" data-toggle="collapse" data-target="#ManagerUser" title="Post" aria-expanded="false">
+        <span class="icon">
+            <i class="fas fa-user"></i>
+        </span>
+        <span class="link-text">Manager User</span>
+        <span class="ml-auto myCaret"></span>
+      </a>
+      <div id="ManagerUser" class="collapse">
+        <a routerLink="/List" title="A New User">
+          <span class="icon">
+            <i class="fas fa-list-alt"></i>
+          </span>
+          <span class="link-text">A New User</span>
+        </a>
+        <a target="_blank" href="https://dealers.aithrx.com/Admin/listusers" title="List Users">
+          <span class="icon">
+            <i class="fas fa-list-alt"></i>
+          </span>
+          <span class="link-text">List Users</span>
+        </a>
+        <a target="_blank" href="https://dealers.aithrx.com/Admin/ListDealers" title="List Dealers">
+            <span class="icon">
+                <i class="fas fa-dollar-sign"></i>
+            </span>
+            <span class="link-text">List Dealers</span>
+        </a>
+        <a target="_blank" href="https://dealers.aithrx.com/Admin/ActivateDealersList" title="Activate Dealers">
+            <span class="icon">
+                <i class="fas fa-list-alt"></i>
+            </span>
+            <span class="link-text">Activate Dealers</span>
+        </a>
+        <a  routerLink="/add-groups" title="List Group">
+            <span class="icon">
+                <i class="fas fa-dollar-sign"></i>
+            </span>
+            <span class="link-text">List Group</span>
+        </a>
+        <a routerLink="/add-roles" title="List Roles">
+            <span class="icon">
+                <i class="fab fa-superpowers"></i>
+            </span>
+            <span class="link-text">List Roles</span>
+        </a>
+        <a  routerLink="/add-postions"  title="List Postions">
+            <span class="icon">
+                <i class="fas fa-list-alt"></i>
+            </span>
+            <span class="link-text">List Postions</span>
+        </a>
+        <a routerLink="/add-Reps" title="List REP">
+            <span class="icon">
+                <i class="fas fa-user-alt"></i>
+            </span>
+            <span class="link-text">List REP</span>
+        </a>
+        <a routerLink="/add-Wholesalers" title="List Whole Saler">
+            <span class="icon">
+                <i class="fas fa-user-alt"></i>
+            </span>
+            <span class="link-text">List Whole Saler</span>
+        </a>
+      </div>
+    </li>
+    <li>
+        <a target="_blank" href="https://dealers.aithrx.com/dealer/findcars" title="Dealer Pages">
+            <span class="icon">
+                <i class="fas fa-comments-dollar"></i>
+            </span>
+            <span class="link-text">Dealer Pages</span>
+        </a>
+    </li>
+    <li>
+        <a href="#" class="myBtn" data-toggle="collapse" data-target="#ManagerLender" title="Post" aria-expanded="false">
+          <span class="icon">
+            <i class="fas fa-university"></i>
+          </span>
+          <span class="link-text">Manager Lender</span>
+          <span class="ml-auto myCaret"></span>
+        </a>
+        <div id="ManagerLender" class="collapse">
+          <a target="_blank" href="https://dealers.aithrx.com/Admin/ListLenders" title="List Lenders">
+            <span class="icon">
+                <i class="fas fa-plus-circle"></i>
+            </span>
+            <span class="link-text">List Lenders</span>
+          </a>
+        </div>
+    </li>
+
+    
+  </ul>
+  </div>

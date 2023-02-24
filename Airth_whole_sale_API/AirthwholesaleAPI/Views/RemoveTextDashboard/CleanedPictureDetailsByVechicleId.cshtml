@@ -1,0 +1,152 @@
+﻿@model Airthwholesale.Bal.DTO.DashboardFilesDetailsViewModelDTO
+
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" /> *@
+
+<link href="/CustomContent/css/style.css" rel="stylesheet" />
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/2.2.3/jquery.elevatezoom.min.js" integrity="sha512-UH428GPLVbCa8xDVooDWXytY8WASfzVv3kxCvTAFkxD2vPjouf1I3+RJ2QcSckESsb7sI+gv3yhsgw9ZhM7sDw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<style>
+
+        table {
+        table-layout: fixed;
+        word-wrap: break-word;
+    }
+    .removetext-outer
+    {
+        float:left;
+        width:100%;
+        padding:20px 10px 40px;
+    }
+
+    .remove-content
+    {
+        float:left;
+        width:100%;
+        border:1px #eee solid;
+        padding:10px;
+    }
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 18px;
+    color: inherit;
+    padding: 2px 4px;
+    display:inline-block;
+}
+span.clickable.filter {
+    position: relative;
+    top: 5px;
+}
+#dashboardTable_wrapper {
+    padding: 0;
+}
+table#dashboardTable thead {
+    background: #428bca;
+    padding: 0;
+    color: #fff;
+    font-size: 14px;
+}
+table#dashboardTable thead th {
+    border: none;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+    border: 1px #e7e5e5 solid;
+}
+
+table#dashboardTable {
+    border: 1px #428bca solid;
+    border-radius:4px;
+    -webket-border-radius:4px;
+    -moz-border-radius:4px;
+    -o-border-radius:4px;
+}
+</style>
+
+
+
+
+<section class="removetext-outer">
+    <div class="container-fluid">
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                 <h3 class="panel-title">Remove Text Files Details</h3>
+                 <div class="pull-right">
+							<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+								<i class="glyphicon glyphicon-filter"></i>
+							</span>
+						</div>
+            </div>
+            <div class="panel-body">
+               <table class="table table-striped" id="dashboardTable">
+                    <thead>
+                        <tr>
+                            <th>Orignal pic</th>
+                            <th>Remove Text pic</th>
+                            <th>Old file size</th>
+                            <th>New file size</th>
+                            <th>Remove text</th>
+                            <th>Total text count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var detailsdata in Model.RemoveTextFiledetailsDTO)
+                        {
+                            <tr>
+
+                                <td>
+                                    <img src="@detailsdata.orignalPhotocdnlink" class="img-fluid img-thumbnail" width="500" height="300" alt="img">
+                                </td>
+
+                                <td>
+                                    <img src="@detailsdata.removetextfilecdnlink" class="img-fluid img-thumbnail" width="500" height="300" alt="img">
+                                </td>
+
+                                <td>@detailsdata.old_file_size</td>
+                                <td>@detailsdata.new_file_size</td>
+                                <td>@detailsdata.characters_value</td>
+                                <td>@detailsdata.Removetext_count</td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+   
+
+    
+
+
+
+</div>
+
+</section>
+
+
+    <script>
+    $(document).ready(function() {
+        $('#dashboardTable').DataTable();
+    
+    });
+
+    $("img").elevateZoom({ tint: true, tintColour: '#F90', tintOpacity: 0.5 });
+
+</script>

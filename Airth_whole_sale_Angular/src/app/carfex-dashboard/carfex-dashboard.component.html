@@ -1,0 +1,150 @@
+<section class="wholesalesection">
+    <div class="container">
+  
+  
+  
+      <div class="row">
+        <form class="col-12" [formGroup]="CarfexPortalForm" >
+          <div class="col-12 mb-3">
+            <div class="row justify-content-between">
+              <h2 class="col-auto">API Connection Test Application</h2>
+              <div class="col-auto">
+                <button class="btn btn-primary mr-1" routerLink="/Carfax-API"  >Back to API List</button>
+                <button class="btn btn-primary mr-1" (click)="SetDefaultValues();"> Use Default Values</button>
+                
+                
+              </div>
+            </div>
+          
+          <p>This application for test the Carfax API connectivity,
+            To test the API connectivity user must need to insert the following values, press the test connect button.</p>
+        </div>
+  
+  
+    <div class="col-12" style="margin-top:2.5em;">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <!-- <label for="DateEntered">API Base URL</label> -->
+              <input formControlName="APIBaseControl" class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && f.APIBaseControl.errors }" [(ngModel)]="APIBaseURL"  placeholder="API Base URL*" required>
+               <div *ngIf="submitted && f.APIBaseControl.errors" class="invalid-feedback">
+                <div *ngIf="f.APIBaseControl.errors.required">API URL is required</div>
+               </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <!-- <label for="EnteredBy">Client ID</label> -->
+              <input formControlName="ClientIDControl" class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && f.ClientIDControl.errors }"  [(ngModel)]="clientid"  placeholder="Client ID*" required>
+              <div *ngIf="submitted && f.ClientIDControl.errors" class="invalid-feedback">
+                <div *ngIf="f.ClientIDControl.errors.required">Client ID is required</div>
+            </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="row mt-2">
+          <div class="col-md-6">
+            <div class="form-group">
+              <!-- <label for="DateEntered">Client Secret</label> -->
+              <input  formControlName="clientsecretControl" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.clientsecretControl.errors }"
+               [(ngModel)]="clientsecret"  placeholder="Client Secret*" required>
+               <div *ngIf="submitted && f.clientsecretControl.errors" class="invalid-feedback">
+                <div *ngIf="f.clientsecretControl.errors.required">Client Secret is required</div>
+            </div>
+  
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <!-- <label for="EnteredBy">Audience Value</label> -->
+              <input   formControlName="audienceValueControl" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.audienceValueControl.errors }"
+               [(ngModel)]="audienceValue"   placeholder="Audience Value*" required>
+              <div *ngIf="submitted && f.audienceValueControl.errors" class="invalid-feedback">
+                <div *ngIf="f.audienceValueControl.errors.required">Audience Value is required</div>
+               </div>
+            </div>
+          </div>
+        </div>
+  
+  
+          <div class="row mt-2">
+            <div class="col-md-6">
+              <div class="form-group">
+                <!-- <label for="DateEntered">Grant Type Value</label> -->
+                <input formControlName="granttypeValueControl" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.granttypeValueControl.errors }" [(ngModel)]="granttypeValue"  placeholder="Grant Type Value*" required>
+                <div *ngIf="submitted && f.granttypeValueControl.errors" class="invalid-feedback">
+                  <div *ngIf="f.granttypeValueControl.errors.required">Grant Type Value is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+  
+                </div>
+            </div>
+          </div>
+  
+          <div class="row mt-2">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <button class="btn btn-primary mr-1" (click)="onSubmit()"> Test Connect</button>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+  
+                </div>
+              </div>
+          </div>
+  
+        <div class="col-12 wholesaledetails">
+          <div class="row">
+            <ul class="list-unstyled">
+              <li>
+                <b>Connection Status:</b>
+                <label>{{ShowErrorMessage}}</label>
+              </li>
+              <li>
+                <b>Access Token:</b>
+                <label><p>{{access_tokenValues}}</p> </label>
+              </li>
+              <li>
+                <b>Expires in:</b>
+                <label> {{expires_inValue}}</label>
+              </li>
+              <li>
+                <b>Scope:</b>
+                <label>{{scopeValue}}</label>
+              </li>
+              <li>
+                <b>Access Token:</b>
+                <label> {{token_typeValues}}</label>
+              </li>
+            </ul>
+  
+          </div>
+  
+        </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

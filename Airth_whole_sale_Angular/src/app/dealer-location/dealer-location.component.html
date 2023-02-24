@@ -1,0 +1,38 @@
+<section id="google-map">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 mt-3">
+          <div class="w-100">
+            <h3>Dealers Locations</h3>
+            <!-- <p><a class="btn btn-primary btn-md" href="https://angular-maps.com/" target="_blank">Official Website</a></p> -->
+          </div>
+          <div class="w-100">
+            
+          
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false"
+        [zoomControl]="true"
+          >
+          <agm-marker *ngFor="let m of dealerLoctaions; let i = index" (markerClick)="clickedMarker(m.label, i)" [latitude]="m.lat"
+            [longitude]="m.lng" [label]="m.label" [markerDraggable]="m.draggable" (dragEnd)="markerDragEnd(m, $event)">
+            <agm-info-window>
+              <h5 class="text-primary">Dealer Details</h5>
+              <label><b> Dealer Name:-</b> </label> <strong> {{m.label}}</strong>
+  
+              <br>
+              <label><b>Address:- </b></label> <strong> {{m.Address}}</strong>
+              <br>
+              <label><b>Vehicle Count:- </b> </label> <strong> {{m.VehicleCount}}</strong>
+  
+  
+            </agm-info-window>
+          </agm-marker>
+          <agm-circle [latitude]="lat + 0.3" [longitude]="lng" [radius]="5000" [fillColor]="'red'" [circleDraggable]="true"
+            [editable]="true">
+          </agm-circle>
+        </agm-map>
+         </div>
+        </div>
+      </div>
+        
+    </div>
+  </section>
