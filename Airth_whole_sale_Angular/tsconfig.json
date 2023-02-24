@@ -20,5 +20,8 @@
 "compilerOptions": {
   "experimentalDecorators": true,
   "allowJs": true
-}
+},
+"types": [
+  "googlemaps"
+]
 }
