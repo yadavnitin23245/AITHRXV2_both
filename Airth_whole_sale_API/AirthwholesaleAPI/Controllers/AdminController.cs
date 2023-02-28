@@ -126,7 +126,7 @@ namespace AirthwholesaleAPI.Controllers
                 var responseObj = _adminLogicBAL.GetGroupByIds(obj.id.ToString());
                 if (responseObj == null)
                     return NotFound();
-                return Ok(responseObj);
+                return Ok(responseObj.FirstOrDefault());
             }
             catch (AppException ex)
             {
@@ -141,20 +141,28 @@ namespace AirthwholesaleAPI.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("UpdateGroup")]
-        public async Task<IActionResult> UpdateGroup([FromBody] DGroupDTO Obj)
+        public async Task<IActionResult> UpdateGroup([FromBody] UpdateDTO objparam)
         {
             try
             {
+               
+                DGroupDTO objectupdategroup= new DGroupDTO();
+                objectupdategroup.id = objparam.id;
+                objectupdategroup.GroupName = objparam.GroupName;
+
                 if (!ModelState.IsValid)
                 {
                     return BadRequest(ModelState);
                 }
-                var responseObj = await _adminLogicBAL.UpdateGroups(Obj);
+                var responseObj = await _adminLogicBAL.UpdateGroups(objectupdategroup);
                 if (string.IsNullOrEmpty(responseObj))
                 {
                     return NotFound();
                 }
-                return Ok(responseObj);
+                return Ok(new
+                {
+                    data = responseObj
+                });
             }
             catch (AppException ex)
             {
@@ -167,10 +175,40 @@ namespace AirthwholesaleAPI.Controllers
         /// </summary>
         /// <returns></returns>
         /// 
+        [HttpPost]
+        [Route("DeleteGroup")]
+        public async Task<IActionResult> DeleteGroup([FromBody] DeleteDTO Obj)
+        {
+            
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                var responseObj = await _adminLogicBAL.DeleteGroups(Obj.Id);
+                if (string.IsNullOrEmpty(responseObj))
+                {
+                    return NotFound();
+                }
+
+             
+                
+                return Ok(new
+                {
+                    data= responseObj
+                });
+            }
+            catch (AppException ex)
+            {
+                return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+            }
+        }
+
 
         [HttpGet]
         [Route("DeleteGroup/{id}")]
-        public async Task<IActionResult> DeleteGroup(int id)
+        public async Task<IActionResult> oldDeleteGroup(int id)
         {
             try
             {

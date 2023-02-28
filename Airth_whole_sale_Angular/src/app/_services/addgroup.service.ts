@@ -39,6 +39,8 @@ export class AddgroupService {
   private baseUrl_saveaddgroup: string = environment.apiUrl + '/Admin/AddGroup';
   private baseUrl_GetAllGroupsList: string = environment.apiUrl + '/Admin/GetAllGroupsList';
   private baseUrl_DeleteGroupsList: string = environment.apiUrl + '/Admin/DeleteGroup';
+  private baseUrl_EditGroupList: string = environment.apiUrl +'/Admin/GetGroupById' ;
+  private baseUrl_UpdateGroupName: string = environment.apiUrl +'/Admin/UpdateGroup' ;
 
 
   //calling function saving method
@@ -50,13 +52,25 @@ export class AddgroupService {
 
   //calling function saving method
   Getgrouplist() {
-    return this.http.get<any[]>(this.baseUrl_GetAllGroupsList);
+    return this.http.get<CDATASection[]>(this.baseUrl_GetAllGroupsList);
 }
 
 //delete grouplist
  //calling function saving method
- Deletegrouplist(Id) {
-  return this.http.get<string>(this.baseUrl_DeleteGroupsList+"/"+Id);
+ Deletegrouplist(FormData) {
+  return this.http.post<any>(this.baseUrl_DeleteGroupsList,FormData);
+}
+
+//this is for calling edit functionality
+EditGroupList(FormData) {
+  return this.http.post<any>(this.baseUrl_EditGroupList,FormData);
+
+}
+
+//this is for calling edit functionality
+UpdateGroupName(FormData) {
+  return this.http.post<any>(this.baseUrl_UpdateGroupName,FormData);
+
 }
 
 }

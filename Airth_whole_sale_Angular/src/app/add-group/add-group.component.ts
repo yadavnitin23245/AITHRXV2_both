@@ -48,6 +48,9 @@ export class AddGroupComponent implements OnInit {
 
   Grouplist=[];
 deleteitem:any=0;
+edititemid:any=0;
+editvaluename:any;
+updateid:any;
   // function for column sorting
   sort(property) {
     this.isDesc = !this.isDesc; //change the direction
@@ -85,6 +88,32 @@ openModal(template: TemplateRef<any>,itemid:any) {
   this.deleteitem=itemid;
   this.modalRef = this.confirmModalService.show(template, { class: 'modal-dialog-centered' });
 }
+// edit functionality
+// function for open model pop up
+EditModalpopup(template: TemplateRef<any>,itemid:any) {
+  debugger;
+  this.edititemid=itemid;
+  var modelGroup = {
+    "id": itemid
+  }
+
+  this.addgroupService.EditGroupList(modelGroup)
+  .subscribe(
+    data => {
+      debugger;
+      this.editvaluename=data.groupName;
+      this.updateid=data.id;
+     
+      this.modalRef = this.confirmModalService.show(template, { class: 'modal-dialog-centered' });
+     
+    },
+    error => {
+    });
+
+
+  
+  
+}
 
 openAddGroupModel(targetModal) {
   this.modalcloseOpen = this.modalService.open(targetModal, {
@@ -92,6 +121,28 @@ openAddGroupModel(targetModal) {
     backdrop: 'static',
     size: 'md'
   });
+}
+// for update the edited part
+update()
+{
+  var modelGroup = {
+    "id": this.updateid,
+    "GroupName": this.editvaluename,
+  }
+  this.addgroupService.UpdateGroupName( modelGroup)
+
+  .subscribe(
+    (data: any) => {
+      this.Getgrouplist();
+
+      //this.UpdateGroupName();
+      alert("data saved")
+    // this.Grouplist = data;
+    },
+    error => {
+    });
+  //this.updateid=id;
+ // this.addgroupService.EditGroupList(updateid);
 }
 
 ValidTextBox(event: KeyboardEvent) {
@@ -126,9 +177,12 @@ ValidTextBox(event: KeyboardEvent) {
 confirm(): void {
   debugger;
 this.deleteitem;
-this.addgroupService.Deletegrouplist(this.deleteitem)
+var modelGroup = {
+  "Id": this.deleteitem
+}
+this.addgroupService.Deletegrouplist(modelGroup)
   .subscribe(
-    (data) => {
+    data => {
       debugger;
       this.Getgrouplist();
     },
@@ -166,4 +220,19 @@ Getgrouplist()
     });
 }
 
+
+// calling for delete group
+ 
+//  Deletegrouplist(Id) {
+  
+//   var modelGroup = {
+//     "id": Id
+//   }
+//   this.addgroupService.Deletegrouplist(modelGroup)
+//   .subscribe(book=>{
+// debugger;
+  
+//   })
+
+// }
 }

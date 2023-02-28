@@ -10,3 +10,15 @@ C:\AirthWholeSaleProject\AirthwholeSaleAPI\Airth_whole_sale_API\AirthwholesaleAP
 C:\AirthWholeSaleProject\AirthwholeSaleAPI\Airth_whole_sale_API\AirthwholesaleAPI.Common\obj\Debug\net6.0\refint\AirthwholesaleAPI.Common.dll
 C:\AirthWholeSaleProject\AirthwholeSaleAPI\Airth_whole_sale_API\AirthwholesaleAPI.Common\obj\Debug\net6.0\AirthwholesaleAPI.Common.pdb
 C:\AirthWholeSaleProject\AirthwholeSaleAPI\Airth_whole_sale_API\AirthwholesaleAPI.Common\obj\Debug\net6.0\ref\AirthwholesaleAPI.Common.dll
+D:\AITHRXV2_both\AITHRXV2_both\Airth_whole_sale_API\AirthwholesaleAPI.Common\bin\Debug\net6.0\AirthwholesaleAPI.Common.deps.json
+D:\AITHRXV2_both\AITHRXV2_both\Airth_whole_sale_API\AirthwholesaleAPI.Common\bin\Debug\net6.0\AirthwholesaleAPI.Common.dll
+D:\AITHRXV2_both\AITHRXV2_both\Airth_whole_sale_API\AirthwholesaleAPI.Common\bin\Debug\net6.0\AirthwholesaleAPI.Common.pdb
+D:\AITHRXV2_both\AITHRXV2_both\Airth_whole_sale_API\AirthwholesaleAPI.Common\obj\Debug\net6.0\AirthwholesaleAPI.Common.csproj.AssemblyReference.cache
+D:\AITHRXV2_both\AITHRXV2_both\Airth_whole_sale_API\AirthwholesaleAPI.Common\obj\Debug\net6.0\AirthwholesaleAPI.Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\AITHRXV2_both\AITHRXV2_both\Airth_whole_sale_API\AirthwholesaleAPI.Common\obj\Debug\net6.0\AirthwholesaleAPI.Common.AssemblyInfoInputs.cache
+D:\AITHRXV2_both\AITHRXV2_both\Airth_whole_sale_API\AirthwholesaleAPI.Common\obj\Debug\net6.0\AirthwholesaleAPI.Common.AssemblyInfo.cs
+D:\AITHRXV2_both\AITHRXV2_both\Airth_whole_sale_API\AirthwholesaleAPI.Common\obj\Debug\net6.0\AirthwholesaleAPI.Common.csproj.CoreCompileInputs.cache
+D:\AITHRXV2_both\AITHRXV2_both\Airth_whole_sale_API\AirthwholesaleAPI.Common\obj\Debug\net6.0\AirthwholesaleAPI.Common.dll
+D:\AITHRXV2_both\AITHRXV2_both\Airth_whole_sale_API\AirthwholesaleAPI.Common\obj\Debug\net6.0\refint\AirthwholesaleAPI.Common.dll
+D:\AITHRXV2_both\AITHRXV2_both\Airth_whole_sale_API\AirthwholesaleAPI.Common\obj\Debug\net6.0\AirthwholesaleAPI.Common.pdb
+D:\AITHRXV2_both\AITHRXV2_both\Airth_whole_sale_API\AirthwholesaleAPI.Common\obj\Debug\net6.0\ref\AirthwholesaleAPI.Common.dll

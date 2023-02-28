@@ -812,6 +812,7 @@ namespace Airthwholesale.Bal.Logic
         {
             return new DGroup()
             {
+                id= obj.id,
                 GroupName = obj.GroupName,
                 Createdby = obj.Createdby,
                 IsActive = obj.IsActive,

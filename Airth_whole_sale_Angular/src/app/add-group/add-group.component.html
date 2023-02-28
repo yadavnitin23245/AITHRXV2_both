@@ -40,7 +40,7 @@
                             <td>{{ Grouplistdata.id }}</td>
                             <td> {{ Grouplistdata.groupName }}</td>
                             <td>
-                              <button class="btn bg-gradient-info btn-sm"><i class="fa-solid fa-pen-to-square"></i></button>
+                              <button class="btn bg-gradient-info btn-sm" (click)="EditModalpopup(editpopup,Grouplistdata.id)" ><i class="fa-solid fa-pen-to-square"></i></button>
                               <button class="btn bg-gradient-danger btn-sm ml-2" (click)="openModal(template,Grouplistdata.id)"><i class="fa fa-trash"></i></button>
                             </td>
                           </tr>
@@ -108,6 +108,52 @@
                         
                     </div>
                   </ng-template>
+
+<!-- 
+                edit popup  start-->
+                <ng-template #editpopup>
+                  <div class="modal-header" style="background-color: black;">
+                    <h5 class="modal-title" id="AccounttransferLabel" style="color: white;">Edit Group</h5>
+                     <button type="button" class="close" style="color: white;" #closebutton (click)="modal.dismiss()"
+                            aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+
+                  <section class="generate-report">
+                    <div class="col-12">
+                        <p style="margin-left: -15px;">Name
+                        </p>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" formControlName="groupName" 
+                      class="form-control" (keypress)="ValidTextBox($event)" [(ngModel)] ="editvaluename"
+                         />
+                       
+
+                    </div>
+                    </section>
+                    </div>
+                 
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-sm text-white" (click)="update();">
+                      <i style="margin-right:4px;vertical-align:middle;font-size:13px;"></i> Update
+                    </button>
+                     
+                    <button class="btn btn-danger btn-sm text-white" (click)="modal.dismiss();">
+                      <i style="margin-right:4px;vertical-align:middle;font-size:13px;"></i> Cancel
+                    </button>
+                
+                      
+                  </div>
+                  
+                
+    
+
+                </ng-template>
+                <!-- 
+                edit popup  end-->
             </form>
         </div>
     </div>

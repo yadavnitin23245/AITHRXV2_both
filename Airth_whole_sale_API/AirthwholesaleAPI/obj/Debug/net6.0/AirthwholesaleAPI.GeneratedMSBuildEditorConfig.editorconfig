@@ -8,25 +8,25 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = AirthwholesaleAPI
 build_property.RootNamespace = AirthwholesaleAPI
-build_property.ProjectDir = C:\AirthWholeSaleProject\AirthwholeSaleAPI\Airth_whole_sale_API\AirthwholesaleAPI\
+build_property.ProjectDir = D:\AITHRXV2_both\AITHRXV2_both\Airth_whole_sale_API\AirthwholesaleAPI\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\AirthWholeSaleProject\AirthwholeSaleAPI\Airth_whole_sale_API\AirthwholesaleAPI
+build_property.MSBuildProjectDirectory = D:\AITHRXV2_both\AITHRXV2_both\Airth_whole_sale_API\AirthwholesaleAPI
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/AirthWholeSaleProject/AirthwholeSaleAPI/Airth_whole_sale_API/AirthwholesaleAPI/Views/RemoveTextDashboard/CleanedPictureDetailsByVechicleId.cshtml]
+[D:/AITHRXV2_both/AITHRXV2_both/Airth_whole_sale_API/AirthwholesaleAPI/Views/RemoveTextDashboard/CleanedPictureDetailsByVechicleId.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVtb3ZlVGV4dERhc2hib2FyZFxDbGVhbmVkUGljdHVyZURldGFpbHNCeVZlY2hpY2xlSWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/AirthWholeSaleProject/AirthwholeSaleAPI/Airth_whole_sale_API/AirthwholesaleAPI/Views/RemoveTextDashboard/Dashboard.cshtml]
+[D:/AITHRXV2_both/AITHRXV2_both/Airth_whole_sale_API/AirthwholesaleAPI/Views/RemoveTextDashboard/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVtb3ZlVGV4dERhc2hib2FyZFxEYXNoYm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/AirthWholeSaleProject/AirthwholeSaleAPI/Airth_whole_sale_API/AirthwholesaleAPI/Views/RemoveTextDashboard/DashboardFileDetails.cshtml]
+[D:/AITHRXV2_both/AITHRXV2_both/Airth_whole_sale_API/AirthwholesaleAPI/Views/RemoveTextDashboard/DashboardFileDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVtb3ZlVGV4dERhc2hib2FyZFxEYXNoYm9hcmRGaWxlRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/AirthWholeSaleProject/AirthwholeSaleAPI/Airth_whole_sale_API/AirthwholesaleAPI/Views/_Layout.cshtml]
+[D:/AITHRXV2_both/AITHRXV2_both/Airth_whole_sale_API/AirthwholesaleAPI/Views/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

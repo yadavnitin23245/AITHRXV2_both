@@ -2574,11 +2574,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\AirthWholeSaleProject\\AirthwholeSaleAPI\\Airth_whole_sale_API\\Airthwholesale.Repository\\Airthwholesale.Repository.csproj",
+      "projectUniqueName": "D:\\AITHRXV2_both\\AITHRXV2_both\\Airth_whole_sale_API\\Airthwholesale.Repository\\Airthwholesale.Repository.csproj",
       "projectName": "Airthwholesale.Repository",
-      "projectPath": "C:\\AirthWholeSaleProject\\AirthwholeSaleAPI\\Airth_whole_sale_API\\Airthwholesale.Repository\\Airthwholesale.Repository.csproj",
+      "projectPath": "D:\\AITHRXV2_both\\AITHRXV2_both\\Airth_whole_sale_API\\Airthwholesale.Repository\\Airthwholesale.Repository.csproj",
       "packagesPath": "C:\\Users\\Spadez\\.nuget\\packages\\",
-      "outputPath": "C:\\AirthWholeSaleProject\\AirthwholeSaleAPI\\Airth_whole_sale_API\\Airthwholesale.Repository\\obj\\",
+      "outputPath": "D:\\AITHRXV2_both\\AITHRXV2_both\\Airth_whole_sale_API\\Airthwholesale.Repository\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -2598,8 +2598,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\AirthWholeSaleProject\\AirthwholeSaleAPI\\Airth_whole_sale_API\\Airthwholesale.Data\\Airthwholesale.Data.csproj": {
-              "projectPath": "C:\\AirthWholeSaleProject\\AirthwholeSaleAPI\\Airth_whole_sale_API\\Airthwholesale.Data\\Airthwholesale.Data.csproj"
+            "D:\\AITHRXV2_both\\AITHRXV2_both\\Airth_whole_sale_API\\Airthwholesale.Data\\Airthwholesale.Data.csproj": {
+              "projectPath": "D:\\AITHRXV2_both\\AITHRXV2_both\\Airth_whole_sale_API\\Airthwholesale.Data\\Airthwholesale.Data.csproj"
             }
           }
         }
