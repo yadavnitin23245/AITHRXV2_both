@@ -105,14 +105,16 @@ EditModalpopup(template: TemplateRef<any>,itemid:any) {
       this.updateid=data.id;
      
       this.modalRef = this.confirmModalService.show(template, { class: 'modal-dialog-centered' });
-     
+      
     },
     error => {
     });
 
+  
+}
 
-  
-  
+closeEditModel(){
+  this.modalRef.hide() ;
 }
 
 openAddGroupModel(targetModal) {
@@ -136,11 +138,13 @@ update()
       this.Getgrouplist();
 
       //this.UpdateGroupName();
-      alert("data saved")
+      alert("data changed")
+      this.modalRef.hide() ;
     // this.Grouplist = data;
     },
     error => {
     });
+    
   //this.updateid=id;
  // this.addgroupService.EditGroupList(updateid);
 }
@@ -156,11 +160,18 @@ ValidTextBox(event: KeyboardEvent) {
       var modelGroup = {
         "GroupName": this.AddGroupForm.controls.groupName.value
       }
+
+      
       this.addgroupService.Saveaddgroup(modelGroup)
       .subscribe(
         (data: any) => {
           this.Getgrouplist();
           alert("data saved")
+          this.modalcloseOpen.hide();
+      
+
+
+          //this.modalRef.hide() ;
         // this.Grouplist = data;
         },
         error => {
@@ -215,6 +226,7 @@ Getgrouplist()
     (data: any) => {
       debugger;
      this.Grouplist = data;
+     this.modalRef.hide() ;
     },
     error => {
     });

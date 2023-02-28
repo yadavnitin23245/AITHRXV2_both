@@ -198,6 +198,8 @@ builder.Services.AddScoped<IRepository<JDPPhotoCleanedDetails>, Repository<JDPPh
 builder.Services.AddScoped<IRepository<DashboardFilesDetailsViewModelDTO>, Repository<DashboardFilesDetailsViewModelDTO>>();
 
 
+builder.Services.AddScoped<IRepository<GraphQLDTO>, Repository<GraphQLDTO>>();
+
 builder.Services.AddScoped<IRepository<DGroup>, Repository<DGroup>>();
 // builder.Services.AddScoped<IRepository<AspNetRoles>, Repository<AspNetRoles>>();
 

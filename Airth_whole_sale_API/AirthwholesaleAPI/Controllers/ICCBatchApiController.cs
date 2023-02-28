@@ -15,7 +15,7 @@ using Microsoft.Extensions.Options;
 using Nancy.Json;
 using Newtonsoft.Json;
 using System.Xml.Linq;
-
+using System.Text.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -96,6 +96,41 @@ namespace AirthwholesaleAPI.Controllers
         }
         #endregion
 
+
+
+        [HttpGet("GetGraphQL")]
+        public async Task<IActionResult> GetGraphQL()
+        {
+
+            try
+            {
+                var client = new HttpClient();
+                var request = new HttpRequestMessage(HttpMethod.Post, "https://inventory-rds-stg.cd-dev.ca/graphql");
+                request.Headers.Add("x-api-key", "da2-xxqdj74ibzhttgdca3u5niytim");
+                var content = new StringContent("{\"query\":\"query{\\r\\n   getVehicles { \\r\\n     Vehicles{\\r\\n   vin,\\r\\n     stock_number,\\r\\n   year,\\r\\n    kms,\\r\\n     make,\\r\\n    model,\\r\\n    trim,\\r\\n    body_type,\\r\\n     exterior_colour,\\r\\n    product_price,\\r\\n                                condition,\\r\\n                                landed_at,\\r\\n                                group_name,\\r\\n                                dealer_name,\\r\\n                                drivetrain,\\r\\n                               # vehicle_features,\\r\\n    seats,\\r\\n   transmission,\\r\\n  condition_status,\\r\\n   interior_colour,\\r\\n     # inspection_report,\\r\\n    }\\r\\n    }\\r\\n}\",\"variables\":{}}", null, "application/json");
+                request.Content = content;
+                var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+
+                string stringResponse = response.Content.ReadAsStringAsync().Result;
+
+                var vehicleList = System.Text.Json.JsonSerializer.Deserialize<GraphQLDTO>(stringResponse);
+
+                var iSVehicleListEmpty = vehicleList.data.getVehicles.Vehicles.Count() > 0 ? false : true;
+
+                if (!iSVehicleListEmpty)
+                {
+                    //Do the foreach loop here to insert call CBB API that we have (if multiple trim and style arises let's use the lowest number again)
+                    //Upon completing the CBB API calls let's insert it into DealerVehicles Table
+                }
+
+                return Ok(stringResponse);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
 
         /// <summary>
         ///Get Vehicle Photos List By VehicleId
@@ -596,6 +631,7 @@ namespace AirthwholesaleAPI.Controllers
                 return new StatusCodeResult(StatusCodes.Status500InternalServerError);
             }
         }
+
 
         /// <summary>
         /// This method is calling to get all Vehicles list for all page
